@@ -67,7 +67,7 @@ class RestauranteController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'direccion' => 'required|string|max:255',
-            'telefono' => 'required|integer|max:10',
+            'telefono' => 'required|integer|max:999999999',
         ]);
 
         $restaurante = Restaurante::create($validatedData);
@@ -154,7 +154,7 @@ class RestauranteController extends Controller
             $validatedData = $request->validate([
                 'nombre' => 'sometimes|string|max:255',
                 'direccion' => 'sometimes|string|max:255',
-                'telefono' => 'sometimes|integer|max:10',
+                'telefono' => 'sometimes|integer|max:999999999',
             ]);
 
             $restaurante->update($validatedData);
