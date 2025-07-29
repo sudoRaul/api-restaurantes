@@ -21,11 +21,6 @@ const router = createRouter({
       path: '/ver-restaurante/:id',
       name: 'ver-restaurante',
       component: () => import('../views/VerRestauranteInd.vue')
-    },
-    {
-      path: '/actualizar-restaurante/:id',
-      name: 'actualizar-restaurante',
-      component: () => import('../views/ActualizarRestaurante.vue'),
     }
   ],
 })
