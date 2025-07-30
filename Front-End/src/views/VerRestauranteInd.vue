@@ -41,11 +41,7 @@ async function getRestaurante() {
 
         if (!response.ok) {
             throw new Error('Error obteniendo el restaurante');
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'No se pudo obtener el restaurante'
-            });
+            
         }
     } catch (error) {
         console.error('Error:', error);
@@ -108,14 +104,14 @@ async function actualizarRestaurante() {
 async function eliminarRestaurante(id) {
 
     const confirmacion = await Swal.fire({
-        title: "Are you sure?",
-        text: "This action cannot be undone.",
+        title: "¿Seguro que desea eliminar este restaurante?",
+        text: "Esta acción no se puede deshacer.",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
     })
 
     if (!confirmacion.isConfirmed) {

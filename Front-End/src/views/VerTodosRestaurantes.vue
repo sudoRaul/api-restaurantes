@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,14 @@ const router = useRouter();
 const loading = ref(true);
 
 const restaurantes = ref([])
+const currentPage = ref(1);
+const perPage = 4;
+
+const totalPages = computed(() => Math.ceil(restaurantes.value.length / perPage));
+const paginatedRestaurantes = computed(() => {
+  const start = (currentPage.value - 1) * perPage;
+  return restaurantes.value.slice(start, start + perPage);
+});
 
 async function getRestaurantes() {
   try {
@@ -22,15 +30,10 @@ async function getRestaurantes() {
     const data = await response.json();
 
     restaurantes.value = data.data;
+    currentPage.value = 1;
 
     if (!response.ok) {
       throw new Error('Error obteniendo los restaurantes');
-
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'No se pudieron obtener los restaurantes'
-      });
     }
   } catch (error) {
     console.error('Error:', error);
@@ -62,9 +65,9 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="flex flex-wrap gap-8 justify-center py-8">
-    <div v-for="restaurante in restaurantes" :key="restaurante.id"
-      class="w-80 h-96 flex flex-col justify-between rounded-xl shadow-lg p-4 bg-white">
+  <div class="flex flex-wrap gap-15 justify-center py-8">
+    <div v-for="restaurante in paginatedRestaurantes" :key="restaurante.id"
+      class="w-120 h-96 flex flex-col justify-between rounded-xl shadow-lg p-4 bg-white">
       <div class="h-40 flex items-center justify-center">
         <img src="@/assets/restauranteIMG.jpg" alt="Imagen genérica de restaurante"
           class="h-full object-contain rounded-xl border-2 border-green-300 shadow" />
@@ -81,5 +84,27 @@ onMounted(() => {
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- Paginación Tailwind -->
+  <div v-if="totalPages > 1" class="flex justify-center mt-8">
+    <nav class="inline-flex -space-x-px">
+      <button
+        class="px-3 py-2 rounded-l-lg border border-gray-300 bg-blue-500 text-white hover:bg-blue-400"
+        :disabled="currentPage === 1"
+        @click="currentPage--"
+      >Anterior</button>
+      <button
+        v-for="page in totalPages" :key="page"
+        class="px-3 py-2 border border-gray-300 font-semibold transition-colors duration-200"
+        :class="currentPage === page ? 'bg-emerald-300 text-white shadow-lg' : 'bg-white text-blue-700 hover:bg-emerald-100'"
+        @click="currentPage = page"
+      >{{ page }}</button>
+      <button
+        class="px-3 py-2 rounded-r-lg border border-gray-300 bg-blue-500 text-white hover:bg-blue-400"
+        :disabled="currentPage === totalPages"
+        @click="currentPage++"
+      >Siguiente</button>
+    </nav>
   </div>
 </template>
