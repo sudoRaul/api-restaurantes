@@ -1,0 +1,8 @@
+Back-End/public/docs
+Back-End/public/vendor/scribe
+Back-End/.env
+
+Front-End/node_modules
+Front-End/npm-debug.log
+Front-End/dist
+Front-End/.env
