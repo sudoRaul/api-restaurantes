@@ -1,0 +1,26 @@
+# Ignorar archivos sensibles y temporales
+
+
+# Ignorar cachés, documentación y logs
+.scribe
+.scribe/*
+storage/*
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Ignorar dependencias locales que no se necesitan en la imagen
+vendor/*
+node_modules/*
+
+# Ignorar archivos de sistema y editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignorar archivos de configuración específicos para desarrollo
+phpunit.xml
+phpunit.xml.dist
+phpcs.xml
+phpstan.neon

@@ -1,0 +1,22 @@
+# Archivos y carpetas de dependencias
+node_modules
+dist
+
+# Archivos temporales o de errores
+npm-debug.log
+yarn-error.log
+
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos del editor
+.vscode
+.idea
+*.swp
+
+
+/vendor
+/public/docs
+/public/vendor/scribe

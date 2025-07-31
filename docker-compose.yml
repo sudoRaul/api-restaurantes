@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   app:
     build:
@@ -6,6 +8,15 @@ services:
       - "8000:80"
     depends_on:
       - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: restaurante
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      APP_ENV: production
+      APP_KEY: base64:PLACEHOLDER_APP_KEY
+      APP_URL: http://localhost:8000
     networks:
       - restaurante-net
 
@@ -16,6 +27,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: restaurante
+    volumes:
+      - dbdata:/var/lib/mysql
     networks:
       - restaurante-net
 
@@ -24,10 +37,13 @@ services:
       context: ./Front-End
     ports:
       - "5173:80"
-    networks:
-      - restaurante-net
     depends_on:
       - app
+    networks:
+      - restaurante-net
+
+volumes:
+  dbdata:
 
 networks:
   restaurante-net:

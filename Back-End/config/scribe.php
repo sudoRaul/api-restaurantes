@@ -40,7 +40,7 @@ return [
 
     'try_it_out' => [
         'enabled' => true,
-        'base_url' => null,
+        'base_url' => env('SCRIBE_LARAVEL_BASE_URL', 'http://localhost:8000'),
         'use_csrf' => false,
         'csrf_url' => '/sanctum/csrf-cookie',
     ],
