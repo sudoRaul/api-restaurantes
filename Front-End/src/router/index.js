@@ -17,7 +17,8 @@ const router = createRouter({
     {
       path: '/ver-restaurante/:id',
       name: 'ver-restaurante',
-      component: () => import('../views/VerRestauranteInd.vue')
+      component: () => import('../views/VerRestauranteInd.vue'),
+      props: true,
     }
   ],
 })

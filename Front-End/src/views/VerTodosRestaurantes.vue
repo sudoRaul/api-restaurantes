@@ -2,6 +2,7 @@
 import { onMounted, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
+import NoRestaurantes from '@/components/NoRestaurantes.vue';
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const router = useRouter();
@@ -20,7 +21,7 @@ const paginatedRestaurantes = computed(() => {
 
 async function getRestaurantes() {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/restaurantes/', {
+    const response = await fetch('http://localhost:8000/api/restaurantes', {
       method: 'GET',
       headers: {
         'X-API-KEY': apiKey,
@@ -37,11 +38,6 @@ async function getRestaurantes() {
     }
   } catch (error) {
     console.error('Error:', error);
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'No se pudieron obtener los restaurantes'
-    });
   } finally {
     loading.value = false;
   }
@@ -65,7 +61,7 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="flex flex-wrap gap-15 justify-center py-8">
+  <div class="flex flex-wrap gap-15 justify-center py-8" v-if="restaurantes.length > 0">
     <div v-for="restaurante in paginatedRestaurantes" :key="restaurante.id"
       class="w-120 h-96 flex flex-col justify-between rounded-xl shadow-lg p-4 bg-white">
       <div class="h-40 flex items-center justify-center">
@@ -84,6 +80,16 @@ onMounted(() => {
         </button>
       </div>
     </div>
+  </div>
+  <div v-else-if="restaurantes.length == 0 && !loading" class="flex flex-col items-center justify-center min-h-[50vh] py-10">
+    <NoRestaurantes
+      :mensaje="'No hay restaurantes disponibles'"
+      :submensaje="'Intente crear uno nuevo.'"
+      :mostrarBoton="true"
+      destino="/crear-restaurante"
+      textoBoton="Crear restaurante"
+      class="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center"
+    />
   </div>
 
   <!-- Paginación Tailwind -->
