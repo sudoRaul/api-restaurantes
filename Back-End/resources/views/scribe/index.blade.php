@@ -26,13 +26,13 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "http://localhost:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="{{ asset("/vendor/scribe/js/tryitout-5.2.1.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.0.0.js") }}"></script>
 
-    <script src="{{ asset("/vendor/scribe/js/theme-default-5.2.1.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-5.0.0.js") }}"></script>
 
 </head>
 
@@ -72,7 +72,7 @@
                 </li>
                                     <ul id="tocify-subheader-restaurantes" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="restaurantes-GETapi-restaurantes">
-                                <a href="#restaurantes-GETapi-restaurantes">Obtener el listado de todos los restaurantes.</a>
+                                <a href="#restaurantes-GETapi-restaurantes">Obtener el listado de todos los restaurantes</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="restaurantes-POSTapi-restaurantes">
                                 <a href="#restaurantes-POSTapi-restaurantes">Crear un nuevo restaurante</a>
@@ -97,7 +97,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 28, 2025</li>
+        <li>Last updated: July 30, 2025</li>
     </ul>
 </div>
 
@@ -106,12 +106,10 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://localhost:8000</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
-
-&lt;aside&gt;As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).&lt;/aside&gt;</code></pre>
+&lt;aside&gt;As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).&lt;/aside&gt;</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include a <strong><code>X-API-KEY</code></strong> header with the value <strong><code>"mirestauranteapikeybasica"</code></strong>.</p>
@@ -121,7 +119,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-                                <h2 id="restaurantes-GETapi-restaurantes">Obtener el listado de todos los restaurantes.</h2>
+                                <h2 id="restaurantes-GETapi-restaurantes">Obtener el listado de todos los restaurantes</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -135,7 +133,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/restaurantes" \
+    --get "http://localhost:8000/api/restaurantes" \
     --header "X-API-KEY: mirestauranteapikeybasica" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -143,7 +141,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/restaurantes"
+    "http://localhost:8000/api/restaurantes"
 );
 
 const headers = {
@@ -267,7 +265,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Guarda un nuevo restaurante con nombre, dirección y teléfono.</p>
+<p>Guarda un nuevo restaurante con nombre, dirección y teléfono</p>
 
 <span id="example-requests-POSTapi-restaurantes">
 <blockquote>Example request:</blockquote>
@@ -275,7 +273,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/restaurantes" \
+    "http://localhost:8000/api/restaurantes" \
     --header "X-API-KEY: mirestauranteapikeybasica" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -289,7 +287,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/restaurantes"
+    "http://localhost:8000/api/restaurantes"
 );
 
 const headers = {
@@ -452,7 +450,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Devuelve los datos de un restaurante por su ID.</p>
+<p>Devuelve los datos de un restaurante por su ID</p>
 
 <span id="example-requests-GETapi-restaurantes--id-">
 <blockquote>Example request:</blockquote>
@@ -460,7 +458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/restaurantes/1" \
+    --get "http://localhost:8000/api/restaurantes/1" \
     --header "X-API-KEY: mirestauranteapikeybasica" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -468,7 +466,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/restaurantes/1"
+    "http://localhost:8000/api/restaurantes/1"
 );
 
 const headers = {
@@ -612,7 +610,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Modifica los datos de un restaurante específico.</p>
+<p>Modifica los datos de un restaurante específico</p>
 
 <span id="example-requests-PUTapi-restaurantes--id-">
 <blockquote>Example request:</blockquote>
@@ -620,7 +618,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/restaurantes/1" \
+    "http://localhost:8000/api/restaurantes/1" \
     --header "X-API-KEY: mirestauranteapikeybasica" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -634,7 +632,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/restaurantes/1"
+    "http://localhost:8000/api/restaurantes/1"
 );
 
 const headers = {
@@ -813,7 +811,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Elimina un restaurante de la base de datos.</p>
+<p>Elimina un restaurante específico</p>
 
 <span id="example-requests-DELETEapi-restaurantes--id-">
 <blockquote>Example request:</blockquote>
@@ -821,7 +819,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/restaurantes/1" \
+    "http://localhost:8000/api/restaurantes/1" \
     --header "X-API-KEY: mirestauranteapikeybasica" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -829,7 +827,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/restaurantes/1"
+    "http://localhost:8000/api/restaurantes/1"
 );
 
 const headers = {

@@ -22,7 +22,7 @@ const form = ref({
 
 async function getRestaurante() {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/restaurantes/${idRestaurante}`, {
+        const response = await fetch(`http://localhost:8000/api/restaurantes/${idRestaurante}`, {
             method: 'GET',
             headers: {
                 'X-API-KEY': apikey
@@ -66,7 +66,7 @@ function cerrarModal() {
 async function actualizarRestaurante() {
     loading.value = true;
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/restaurantes/${idRestaurante}`, {
+        const response = await fetch(`http://localhost:8000/api/restaurantes/${idRestaurante}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ async function eliminarRestaurante(id) {
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/restaurantes/${idRestaurante}`, {
+        const response = await fetch(`http://localhost:8000/api/restaurantes/${idRestaurante}`, {
             method: 'DELETE',
             headers: {
                 'X-API-KEY': apikey

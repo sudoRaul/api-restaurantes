@@ -34,7 +34,7 @@ class RestauranteController extends Controller
         // Devolvemos una respuesta correcta siempre ya que la petición se ha realizado correctamente
         return response()->json([
             'success' => true,
-            'data' => $restaurantes->isEmpty() ? 'No se han encontrado restaurantes' : $restaurantes ,
+            'data' => $restaurantes->isEmpty() ? [] : $restaurantes ,
             'message' => 'Lista de restaurantes'
         ]);
     }

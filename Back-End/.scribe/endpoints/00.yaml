@@ -10,7 +10,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Obtener el listado de todos los restaurantes.'
+      title: 'Obtener el listado de todos los restaurantes'
       description: ''
       authenticated: true
       custom: []
@@ -63,7 +63,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Crear un nuevo restaurante'
-      description: 'Guarda un nuevo restaurante con nombre, dirección y teléfono.'
+      description: 'Guarda un nuevo restaurante con nombre, dirección y teléfono'
       authenticated: true
       custom: []
     headers:
@@ -146,7 +146,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Mostrar un restaurante'
-      description: 'Devuelve los datos de un restaurante por su ID.'
+      description: 'Devuelve los datos de un restaurante por su ID'
       authenticated: true
       custom: []
     headers:
@@ -218,7 +218,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Actualizar un restaurante'
-      description: 'Modifica los datos de un restaurante específico.'
+      description: 'Modifica los datos de un restaurante específico'
       authenticated: true
       custom: []
     headers:
@@ -312,7 +312,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Eliminar un restaurante'
-      description: 'Elimina un restaurante de la base de datos.'
+      description: 'Elimina un restaurante específico'
       authenticated: true
       custom: []
     headers:
